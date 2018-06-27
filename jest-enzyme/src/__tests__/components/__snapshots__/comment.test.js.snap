@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Comment /> should match snapshot 1`] = `
+<ul
+  className="comment"
+>
+  <p
+    className="comment__content"
+  >
+    Just a comment
+  </p>
+  <small
+    className="comment__author"
+  >
+    PuritanicC
+  </small>
+</ul>
+`;

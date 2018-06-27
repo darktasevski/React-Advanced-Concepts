@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CommentList /> should match snapshot 1`] = `
+<ul
+  className="comment__list"
+>
+  <Comment
+    comment={
+      Object {
+        "author": "PuritanicC",
+        "content": "Just a comment",
+        "id": 67829,
+      }
+    }
+    key="67829"
+  />
+  <Comment
+    comment={
+      Object {
+        "author": "PuritanicA",
+        "content": "Just a comment",
+        "id": 70501,
+      }
+    }
+    key="70501"
+  />
+  <Comment
+    comment={
+      Object {
+        "author": "PuritanicB",
+        "content": "Just a comment",
+        "id": 19898,
+      }
+    }
+    key="19898"
+  />
+</ul>
+`;
