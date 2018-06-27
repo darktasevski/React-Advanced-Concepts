@@ -2,15 +2,13 @@ import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 
-import App from '../src/App';
+import Home from './src/components/Home';
 
 const PORT = 5050 || process.env.PORT;
-
 const app = express();
 
 app.get('/', (req, res) => {
-	const content = renderToString(<App />);
-
+	const content = renderToString(<Home />);
 	res.send(content);
 });
 
