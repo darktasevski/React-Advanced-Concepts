@@ -4,7 +4,7 @@ const fetchPerson = () => {
 		.then(res => res.results[0]);
 };
 
-const wrapPromise = promise => {
+export const wrapPromise = promise => {
 	let status = 'pending'; // Track if the promise is complete, loading or error
 	let result = '';
 	let suspender = promise.then(
