@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useState, useDeferredValue } from "react";
 import { wrapPromise } from "./PersonApi";
 import { createResource } from "./PersonApi";
 import PostResult from "./PostResult";
@@ -6,12 +6,17 @@ import ErrorBoundary from "./ErrorBoundary";
 import Person from "./Person";
 import Num from "./Num";
 import { MyButton } from "./MyButton";
+import BigPrime from "./BigPrime.jsx";
 
 const initialResource = createResource();
 
 function App() {
   // const [resource, setResource] = useState(() => createResource())
   const [resource, setResource] = useState(initialResource);
+  const deferredResource = useDeferredValue(resource, {
+    timeoutMs: 5000
+  });
+  const [n, setN] = useState(10);
   const [postResource, setPostResource] = useState({
     result: {
       read() {
@@ -19,6 +24,7 @@ function App() {
       }
     }
   });
+  const isStale = deferredResource !== resource;
 
   return (
     <div className="App">
@@ -30,11 +36,15 @@ function App() {
       </Suspense>
 
       <Suspense fallback={<h2>Number loading...</h2>}>
-        <Num resource={resource}></Num>
+        <div style={{ color: isStale ? "crimson" : "black" }}>
+          <Num resource={deferredResource}></Num>
+        </div>
       </Suspense>
       <MyButton onClick={() => setResource(createResource())}>
         Refresh Data
       </MyButton>
+      <BigPrime n={n}></BigPrime>
+      <input value={"" + n} onChange={e => setN(parseInt(e.target.value))} />
 
       <button
         onClick={() => {
